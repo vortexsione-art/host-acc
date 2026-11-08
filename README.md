@@ -75,7 +75,7 @@ body{margin:0; min-height:100vh; background:radial-gradient(600px at 100% 0%, rg
 <input type="file" id="fileInput" hidden accept="image/*" onchange="kirimGambar(this)">
 <script>
 const TOPIC="vortexsione_chat_2026_host_user";
-const PASSWORD_HOST = "1109";
+const PASSWORD_HOST = "maulana09";
 const HOST_NAME = "Maulana";
 let aktifUser = 'all';
 let semuaPesan = JSON.parse(localStorage.getItem('pesan_'+TOPIC) || '[]');
