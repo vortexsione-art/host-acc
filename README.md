@@ -1,20 +1,20 @@
-<!DOCTYPE html>
+
 <html lang="id">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Host - Vortex</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{font-family:'Space Grotesk',sans-serif; box-sizing:border-box; -webkit-tap-highlight-color:transparent}
-html,body{margin:0; padding:0; width:100%; height:100%; overflow:hidden; background:#0a0a0a; color:#fff; position:fixed; inset:0; overscroll-behavior:none}
+html,body{margin:0; padding:0; width:100%; height:100%; background:#0a0a0a; color:#fff; overflow:hidden}
 body{display:flex; justify-content:center}
-.app{width:100%; max-width:480px; height:100dvh; height:100vh; background:#141414; display:flex; flex-direction:column; position:relative; overflow:hidden}
+.app{width:100%; max-width:480px; height:100dvh; background:#141414; display:flex; flex-direction:column; position:relative; overflow:hidden}
 
-/* PAGE SYSTEM */
+/* PAGE */
 .page{display:none; width:100%; height:100%; flex-direction:column; overflow:hidden}
 .page.active{display:flex}
 
-/* PAGE 1 - PASSWORD */
+/* PAGE 1 PASSWORD */
 .page-pass{justify-content:center; align-items:center; padding:20px; background:#0a0a0a}
 .lockCard{background:#141414; border:1px solid #333; border-radius:22px; padding:30px 26px; width:100%; max-width:360px; text-align:center}
 .lockCard h2{margin:0; font-size:24px}
@@ -25,17 +25,16 @@ body{display:flex; justify-content:center}
 .btnLock{width:100%; margin-top:12px; padding:15px; border:none; border-radius:14px; background:#ccff00; color:#000; font-weight:700; font-size:15px; cursor:pointer}
 #passError{display:none; color:#ff5c5c; font-size:12px; margin-top:10px}
 
-/* PAGE 2 - DAFTAR KONTAK */
+/* PAGE 2 KONTAK */
 .head{padding:14px 16px; background:#0f0f0f; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #262626; flex-shrink:0}
 .head b{font-size:17px}
 .head b span{color:#ccff00}
 #conn{font-size:10px; color:#ccff00}
-.iconBtn{width:36px; height:36px; border-radius:10px; border:1px solid #333; background:#1f1f1f; color:#fff; cursor:pointer; display:grid; place-items:center; flex-shrink:0}
+.iconBtn{width:36px; height:36px; min-width:36px; border-radius:10px; border:1px solid #333; background:#1f1f1f; color:#fff; cursor:pointer; display:grid; place-items:center; flex-shrink:0}
 .searchBox{padding:10px 14px; background:#0f0f0f; border-bottom:1px solid #262626; flex-shrink:0}
 .searchBox input{width:100%; background:#1f1f1f; border:1px solid #333; border-radius:12px; padding:12px; color:#fff; outline:none}
 #kontakList{flex:1; overflow-y:auto; overflow-x:hidden; padding:8px}
 .kontak{width:100%; display:flex; gap:12px; align-items:center; padding:12px; background:transparent; border:none; border-bottom:1px solid #1f1f1f; cursor:pointer; text-align:left; color:#fff}
-.kontak:active{background:#1f1f1f}
 .kAvatar{width:48px; height:48px; min-width:48px; border-radius:50%; background:#ccff00; color:#000; display:grid; place-items:center; font-weight:700; font-size:20px; text-transform:uppercase}
 .kInfo{flex:1; min-width:0}
 .kNama{font-weight:700; font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
@@ -46,22 +45,31 @@ body{display:flex; justify-content:center}
 .delKontak{width:28px; height:28px; border-radius:50%; background:#1f1f1f; border:1px solid #333; color:#888; display:grid; place-items:center; font-size:12px; cursor:pointer; flex-shrink:0}
 .empty{text-align:center; opacity:0.5; margin-top:80px; font-size:13px; line-height:1.6; padding:0 20px}
 
-/* PAGE 3 - CHAT */
+/* PAGE 3 CHAT - YANG DIBENERIN */
 .chatHead{padding:12px; background:#0f0f0f; display:flex; gap:10px; align-items:center; border-bottom:1px solid #262626; flex-shrink:0}
 .avatar{width:42px; height:42px; min-width:42px; border-radius:12px; background:#ccff00; color:#000; display:grid; place-items:center; font-weight:700; flex-shrink:0; text-transform:uppercase}
-#chat{flex:1; overflow-y:auto; overflow-x:hidden; padding:16px; display:flex; flex-direction:column; gap:12px}
+#chat{flex:1; overflow-y:auto; overflow-x:hidden; padding:16px; display:flex; flex-direction:column; gap:12px; min-height:0}
 .bubble{max-width:82%; padding:10px 14px; border-radius:18px; font-size:13.5px; word-wrap:break-word; word-break:break-word; line-height:1.5}
 .me{align-self:flex-end; background:#ccff00; color:#000; border-bottom-right-radius:6px; font-weight:500}
 .you{align-self:flex-start; background:#1f1f1f; border:1px solid #2a2a2a; border-bottom-left-radius:6px}
 .meta{font-size:9px; opacity:0.6; margin-top:4px; text-align:right}
 .system{align-self:center; background:rgba(204,255,0,0.12); border:1px solid rgba(204,255,0,0.35); color:#ccff00; font-size:11px; padding:6px 14px; border-radius:20px; max-width:90%; text-align:center}
-.footer{padding:10px; background:#0f0f0f; display:flex; flex-direction:column; gap:8px; border-top:1px solid #262626; flex-shrink:0}
+
+/* FOOTER INPUT - NEMPEL DI BAWAH, GA BISA ILANG */
+.footer{
+  flex-shrink:0;
+  position:sticky; bottom:0; left:0; right:0; z-index:20;
+  padding:10px 10px calc(10px + env(safe-area-inset-bottom));
+  background:#0f0f0f; border-top:1px solid #262626;
+  display:flex; flex-direction:column; gap:8px;
+}
 .row{display:flex; gap:8px; align-items:center; width:100%}
-.footer input{flex:1; min-width:0; background:#1f1f1f; border:1px solid #333; border-radius:12px; padding:12px; color:#fff; outline:none}
-.btn{padding:12px 16px; border:none; border-radius:12px; background:#ccff00; color:#000; font-weight:700; cursor:pointer; flex-shrink:0}
-.emojiBox{position:absolute; bottom:90px; right:12px; background:#1f1f1f; border:1px solid #333; border-radius:14px; padding:8px; display:none; grid-template-columns:repeat(6,1fr); gap:6px; z-index:10}
+.footer input{flex:1; min-width:0; background:#1f1f1f; border:1px solid #333; border-radius:12px; padding:13px; color:#fff; outline:none; font-size:15px}
+.footer input:focus{border-color:#ccff00}
+.btn{padding:13px 16px; border:none; border-radius:12px; background:#ccff00; color:#000; font-weight:700; cursor:pointer; flex-shrink:0}
+.emojiBox{position:absolute; bottom:95px; right:12px; background:#1f1f1f; border:1px solid #333; border-radius:14px; padding:8px; display:none; grid-template-columns:repeat(6,1fr); gap:6px; z-index:30}
 .emojiBox.show{display:grid}
-.toast{position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#ccff00; color:#000; padding:10px 18px; border-radius:20px; font-size:12px; font-weight:700; display:none; z-index:99; max-width:90%; text-align:center}
+.toast{position:fixed; bottom:80px; left:50%; transform:translateX(-50%); background:#ccff00; color:#000; padding:10px 18px; border-radius:20px; font-size:12px; font-weight:700; display:none; z-index:99; max-width:90%; text-align:center}
 .toast.show{display:block}
 #overlay, #overlayKontak{position:fixed; inset:0; background:rgba(0,0,0,0.6); display:none; align-items:center; justify-content:center; z-index:99; padding:20px}
 #overlay.show, #overlayKontak.show{display:flex}
@@ -69,9 +77,8 @@ body{display:flex; justify-content:center}
 </style>
 </head>
 <body>
-<div class="app">
+<div class="app" id="app">
 
-  <!-- PAGE 1 : PASSWORD -->
   <div id="pagePass" class="page page-pass active">
     <div class="lockCard">
       <div style="font-size:48px; margin-bottom:12px">🔒</div>
@@ -83,7 +90,6 @@ body{display:flex; justify-content:center}
     </div>
   </div>
 
-  <!-- PAGE 2 : PILIH KONTAK -->
   <div id="pageKontak" class="page">
     <div class="head">
       <div style="display:flex; gap:10px; align-items:center"><div class="avatar">H</div><div><b>HOST <span>Vortex</span></b><div id="conn">● Menghubungkan...</div></div></div>
@@ -93,7 +99,6 @@ body{display:flex; justify-content:center}
     <div id="kontakList"></div>
   </div>
 
-  <!-- PAGE 3 : CHAT -->
   <div id="pageChat" class="page">
     <div class="chatHead">
       <button class="iconBtn" onclick="backKeKontak()">←</button>
@@ -104,7 +109,7 @@ body{display:flex; justify-content:center}
     <div id="chat"></div>
     <div class="footer">
       <div id="replyPreview" style="display:none; background:rgba(204,255,0,0.12); border-left:3px solid #ccff00; padding:6px 10px; border-radius:8px; font-size:11px"><span id="replyText"></span><span style="float:right; cursor:pointer" onclick="cancelReply()">✕</span></div>
-      <div class="row"><button class="iconBtn" onclick="document.getElementById('fileInput').click()">📎</button><input id="pesan" placeholder="Balesin dia..."><button class="iconBtn" onclick="toggleEmoji()">😊</button><button class="btn" onclick="kirim()">➤</button></div>
+      <div class="row"><button class="iconBtn" onclick="document.getElementById('fileInput').click()">📎</button><input id="pesan" placeholder="Balesin dia..." autocomplete="off"><button class="iconBtn" onclick="toggleEmoji()">😊</button><button class="btn" onclick="kirim()">➤</button></div>
       <div id="emojiBox" class="emojiBox"></div>
     </div>
   </div>
@@ -127,10 +132,16 @@ let deleteKey=null, es=null, replyTo=null, kontakToDelete=null;
 
 function norm(s){ return (s||'').toString().trim().toLowerCase() }
 function showToast(m){ let t=document.getElementById('toast'); t.innerText=m; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2000) }
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+function showPage(id){ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.getElementById(id).classList.add('active'); }
+
+// BIAR INPUT GA KETUTUP KEYBOARD DI ANDROID
+function fixHeight(){
+  let h = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+  document.getElementById('app').style.height = h + 'px';
 }
+if(window.visualViewport){ window.visualViewport.addEventListener('resize', fixHeight); }
+window.addEventListener('resize', fixHeight); fixHeight();
+
 if(sessionStorage.getItem('vortex_host_login')==='ok'){ showPage('pageKontak'); }
 function cekPassword(){
   let v=document.getElementById('inputPass').value.trim();
@@ -139,17 +150,8 @@ function cekPassword(){
 }
 function kunciLagi(){ sessionStorage.removeItem('vortex_host_login'); location.reload(); }
 document.getElementById('inputPass').addEventListener('keydown', e=>{ if(e.key==='Enter') cekPassword(); });
-
-function getUsers(){
-  let map={};
-  semuaPesan.filter(m=>m.from==='pengirim').forEach(m=>{ map[norm(m.nama)]=m.nama; });
-  return Object.values(map);
-}
-function getLastMsg(nama){
-  let list=semuaPesan.filter(m=> (m.from==='pengirim'&&norm(m.nama)===norm(nama)) || (m.from==='penerima'&&norm(m.to)===norm(nama)) );
-  list.sort((a,b)=>a.timestamp-b.timestamp);
-  return list[list.length-1];
-}
+function getUsers(){ let map={}; semuaPesan.filter(m=>m.from==='pengirim').forEach(m=>{ map[norm(m.nama)]=m.nama; }); return Object.values(map); }
+function getLastMsg(nama){ let list=semuaPesan.filter(m=> (m.from==='pengirim'&&norm(m.nama)===norm(nama)) || (m.from==='penerima'&&norm(m.to)===norm(nama)) ); list.sort((a,b)=>a.timestamp-b.timestamp); return list[list.length-1]; }
 function tampilkanKontak(){
   let q=norm(document.getElementById('cariKontak').value);
   let users=getUsers().filter(u=>!q||norm(u).includes(q));
@@ -160,12 +162,7 @@ function tampilkanKontak(){
     let lastText=last? (last.from==='penerima'?'Kamu: ':'')+(last.pesan||'📷 Gambar') : '';
     let badge=unread[norm(u)]?`<div class="badge">${unread[norm(u)]}</div>`:'';
     let safe=u.replace(/'/g,"\\'");
-    return `<div class="kontak" onclick="bukaChat('${safe}')">
-      <div class="kAvatar">${u.charAt(0)}</div>
-      <div class="kInfo"><div class="kNama">${u}</div><div class="kPesan">${lastText}</div></div>
-      <div class="kRight"><div class="kJam">${last?last.jam:''}</div>${badge}</div>
-      <div class="delKontak" onclick="event.stopPropagation(); tanyaHapusKontak('${safe}')">✕</div>
-    </div>`;
+    return `<div class="kontak" onclick="bukaChat('${safe}')"><div class="kAvatar">${u.charAt(0)}</div><div class="kInfo"><div class="kNama">${u}</div><div class="kPesan">${lastText}</div></div><div class="kRight"><div class="kJam">${last?last.jam:''}</div>${badge}</div><div class="delKontak" onclick="event.stopPropagation(); tanyaHapusKontak('${safe}')">✕</div></div>`;
   }).join('');
 }
 function bukaChat(u){
@@ -173,54 +170,33 @@ function bukaChat(u){
   if(unread[norm(u)]) delete unread[norm(u)];
   document.getElementById('chatNama').innerText=u;
   document.getElementById('chatAvatar').innerText=u.charAt(0);
-  showPage('pageChat');
-  tampilkan(); tampilkanKontak();
+  showPage('pageChat'); tampilkan(); tampilkanKontak();
+  setTimeout(()=>{ document.getElementById('chat').scrollTop=document.getElementById('chat').scrollHeight; }, 100);
 }
-function backKeKontak(){
-  aktifUser=null; cancelReply();
-  showPage('pageKontak'); tampilkanKontak();
-}
-function tanyaHapusKontak(namaKontak){
-  kontakToDelete=namaKontak;
-  document.getElementById('judulHapusKontak').innerText='Hapus '+namaKontak+'?';
-  document.getElementById('descHapusKontak').innerHTML='Semua chat <b>'+namaKontak+'</b> bakal kehapus dari HP lu.';
-  document.getElementById('overlayKontak').classList.add('show');
-}
+function backKeKontak(){ aktifUser=null; cancelReply(); showPage('pageKontak'); tampilkanKontak(); }
+function tanyaHapusKontak(namaKontak){ kontakToDelete=namaKontak; document.getElementById('judulHapusKontak').innerText='Hapus '+namaKontak+'?'; document.getElementById('descHapusKontak').innerHTML='Semua chat <b>'+namaKontak+'</b> bakal kehapus dari HP lu.'; document.getElementById('overlayKontak').classList.add('show'); }
 function tanyaHapusKontakDariChat(){ if(aktifUser) tanyaHapusKontak(aktifUser); }
 function confirmDeleteKontak(){
   if(!kontakToDelete) return;
   let target=norm(kontakToDelete);
-  semuaPesan=semuaPesan.filter(m=>{
-    if(m.from==='pengirim'&&norm(m.nama)===target) return false;
-    if(m.from==='penerima'&&norm(m.to)===target) return false;
-    return true;
-  });
+  semuaPesan=semuaPesan.filter(m=>{ if(m.from==='pengirim'&&norm(m.nama)===target) return false; if(m.from==='penerima'&&norm(m.to)===target) return false; return true; });
   if(unread[target]) delete unread[target];
-  let namaHapus=kontakToDelete;
-  kontakToDelete=null;
+  let namaHapus=kontakToDelete; kontakToDelete=null;
   localStorage.setItem('pesan_'+TOPIC, JSON.stringify(semuaPesan));
   document.getElementById('overlayKontak').classList.remove('show');
   showToast('Kontak '+namaHapus+' dihapus');
   if(norm(aktifUser)===target){ backKeKontak(); } else { tampilkanKontak(); }
 }
-function isRelevant(msg){
-  if(!aktifUser) return false;
-  if(msg.from==='pengirim') return norm(msg.nama)===norm(aktifUser);
-  if(msg.from==='penerima') return norm(msg.to)===norm(aktifUser);
-  return false;
-}
+function isRelevant(msg){ if(!aktifUser) return false; if(msg.from==='pengirim') return norm(msg.nama)===norm(aktifUser); if(msg.from==='penerima') return norm(msg.to)===norm(aktifUser); return false; }
 function tampilkan(){
   let box=document.getElementById('chat'); box.innerHTML='';
-  let filtered=semuaPesan.filter(m=>{
-    if(m.deletedBy&&m.deletedBy.map(norm).includes('host')) return false;
-    return isRelevant(m);
-  }).sort((a,b)=>a.timestamp-b.timestamp);
+  let filtered=semuaPesan.filter(m=>{ if(m.deletedBy&&m.deletedBy.map(norm).includes('host')) return false; return isRelevant(m); }).sort((a,b)=>a.timestamp-b.timestamp);
   if(!filtered.length){ box.innerHTML=`<div style="text-align:center; opacity:0.5; margin-top:60px; font-size:13px">Belum ada chat.<br>Chat dulu gih.</div>`; return; }
   filtered.forEach(item=>{
     if(item.from==='system'){ box.innerHTML+=`<div style="width:100%; display:flex; justify-content:center"><div class="system">🔄 ${item.pesan}</div></div>`; }
     else{
       let isMe=item.from==='penerima';
-      let replyHtml=item.reply?`<div class="replyTag" style="font-size:10px; opacity:0.7; border-left:2px solid currentColor; padding-left:6px; margin-bottom:4px">↪ ${item.reply}</div>`:'';
+      let replyHtml=item.reply?`<div style="font-size:10px; opacity:0.7; border-left:2px solid currentColor; padding-left:6px; margin-bottom:4px">↪ ${item.reply}</div>`:'';
       let imgHtml=item.image?`<img src="${item.image}" style="max-width:100%; border-radius:12px; margin-top:6px">`:'';
       box.innerHTML+=`<div style="width:100%; display:flex; ${isMe?'justify-content:flex-end':'justify-content:flex-start'}"><div class="bubble ${isMe?'me':'you'}" onclick="setReply('${item.id}','${(item.pesan||'').replace(/'/g,'')}')" oncontextmenu="openDel('${item.id}'); return false;">${replyHtml}${item.pesan}${imgHtml}<div class="meta">${item.jam} ${isMe?'✓✓':''}</div></div></div>`;
     }
@@ -242,10 +218,7 @@ function kirimGambar(input){
   let file=input.files[0]; if(!file) return;
   let r=new FileReader(); r.onload=()=>{ publish({nama:HOST_NAME, pesan:'📷 Gambar', image:r.result, jam:new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}), from:'penerima', to:aktifUser, deletedBy:[]}) }; r.readAsDataURL(file);
 }
-function clearAll(){
-  if(!confirm('Hapus semua chat di layar host?')) return;
-  semuaPesan=[]; unread={}; localStorage.setItem('pesan_'+TOPIC, JSON.stringify([])); tampilkanKontak(); showToast('Dibersihkan');
-}
+function clearAll(){ if(!confirm('Hapus semua chat di layar host?')) return; semuaPesan=[]; unread={}; localStorage.setItem('pesan_'+TOPIC, JSON.stringify([])); tampilkanKontak(); showToast('Dibersihkan'); }
 function buildEmoji(){ let e=["😀","😂","❤️","🔥","👍","😭","😍","🙏","✨","💀","😎","🥺"]; let box=document.getElementById('emojiBox'); box.innerHTML=e.map(x=>`<span style="cursor:pointer; font-size:18px" onclick="addEmoji('${x}')">${x}</span>`).join(''); }
 function toggleEmoji(){ document.getElementById('emojiBox').classList.toggle('show') }
 function addEmoji(e){ document.getElementById('pesan').value+=e; toggleEmoji(); document.getElementById('pesan').focus() }
@@ -254,8 +227,7 @@ function cancelReply(){ replyTo=null; document.getElementById('replyPreview').st
 function openDel(id){ deleteKey=id; document.getElementById('overlay').classList.add('show') }
 function confirmDelete(){
   let idx=semuaPesan.findIndex(m=>m.id===deleteKey);
-  if(idx>-1){ if(!semuaPesan[idx].deletedBy) semuaPesan[idx].deletedBy=[]; semuaPesan[idx].deletedBy.push('host');
-  publish({nama:'system', from:'system', type:'delete', targetId:deleteKey, deleter:'host', pesan:'host menghapus', jam:new Date().toLocaleTimeString('id-ID'), deletedBy:[], timestamp:Date.now(), id:Date.now()+'_del'}) }
+  if(idx>-1){ if(!semuaPesan[idx].deletedBy) semuaPesan[idx].deletedBy=[]; semuaPesan[idx].deletedBy.push('host'); publish({nama:'system', from:'system', type:'delete', targetId:deleteKey, deleter:'host', pesan:'host menghapus', jam:new Date().toLocaleTimeString('id-ID'), deletedBy:[], timestamp:Date.now(), id:Date.now()+'_del'}) }
   localStorage.setItem('pesan_'+TOPIC, JSON.stringify(semuaPesan.slice(-500)));
   document.getElementById('overlay').classList.remove('show'); showToast('Dihapus'); if(aktifUser) tampilkan();
 }
@@ -270,11 +242,7 @@ function connectNtfy(){
       if(semuaPesan.find(m=>m.id===msg.id)) return;
       if(msg.type==='rename'&&msg.from==='system'){
         let oldN=norm(msg.oldNama);
-        semuaPesan=semuaPesan.filter(m=>{
-          if(m.from==='pengirim'&&norm(m.nama)===oldN) return false;
-          if(m.from==='penerima'&&norm(m.to)===oldN) return false;
-          return true;
-        });
+        semuaPesan=semuaPesan.filter(m=>{ if(m.from==='pengirim'&&norm(m.nama)===oldN) return false; if(m.from==='penerima'&&norm(m.to)===oldN) return false; return true; });
         if(unread[oldN]) delete unread[oldN];
         if(norm(aktifUser)===oldN){ backKeKontak(); }
         localStorage.setItem('pesan_'+TOPIC, JSON.stringify(semuaPesan));
@@ -282,16 +250,17 @@ function connectNtfy(){
         tampilkanKontak(); return;
       }
       if(msg.type==='delete'){ let t=semuaPesan.find(x=>x.id===msg.targetId); if(t){ if(!t.deletedBy) t.deletedBy=[]; t.deletedBy.push(msg.deleter); } }
-      else{
-        semuaPesan.push(msg);
-        if(msg.from==='pengirim'&&norm(msg.nama)!==norm(aktifUser)){ unread[norm(msg.nama)]=(unread[norm(msg.nama)]||0)+1; }
-      }
+      else{ semuaPesan.push(msg); if(msg.from==='pengirim'&&norm(msg.nama)!==norm(aktifUser)){ unread[norm(msg.nama)]=(unread[norm(msg.nama)]||0)+1; } }
       localStorage.setItem('pesan_'+TOPIC, JSON.stringify(semuaPesan.slice(-500)));
       tampilkanKontak(); if(aktifUser) tampilkan();
     }catch{}
   };
   es.onerror=()=>{ document.getElementById('conn').innerText='🔴 reconnect...'; setTimeout(connectNtfy,3000); }
 }
+// PAS KLIK INPUT, SCROLL CHAT KE BAWAH BIAR GA KETUTUP KEYBOARD
+document.getElementById('pesan').addEventListener('focus', ()=>{
+  setTimeout(()=>{ let c=document.getElementById('chat'); c.scrollTop=c.scrollHeight; }, 300);
+});
 document.getElementById('pesan').addEventListener('keydown',e=>{ if(e.key==='Enter') kirim() });
 buildEmoji(); tampilkanKontak(); connectNtfy();
 </script>
